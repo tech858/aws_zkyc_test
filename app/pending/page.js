@@ -55,9 +55,23 @@ export default function VerificationPage() {
   if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial" }}>
+     <main className="flex min-h-screen flex-col items-center justify-between p-12">
+      <h1 className="text-4xl font-bold mb-8">KYC Process (pending page)</h1>
+      <div className="w-full max-w-lg space-y-4">
+ 
+</div>
+      <div className="w-full max-w-lg space-y-4">
+   <div style={{ padding: "20px", fontFamily: "Arial" }}>
       <h1>Verification Result</h1>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
+
+       
+
+        
+      </div>
+    </main>
   );
+   
+  
 }
