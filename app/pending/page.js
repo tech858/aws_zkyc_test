@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 
 export default function VerificationPage() {
@@ -6,24 +8,29 @@ export default function VerificationPage() {
   const [error, setError] = useState(null);
 
   // Replace with your real API key
-  const key = "YOUR_API_KEY";
+    const clientid = "df232ee0-b0e9-479d-9d4e-bb97e4d77472";
+
+  const key = "prod_a01a07c7bba7b2413c1186d6305636f8eb5c8a7d7b30a194";
 
   useEffect(() => {
     const fetchVerification = async () => {
       try {
         const userID = new URL(window.location.href).searchParams.get("id");
+                  console.log(userID)
+
         if (!userID) {
           setError("Missing user ID in URL");
+          console.log(userID)
           setLoading(false);
           return;
         }
 
         const res = await fetch(
-          `https://z-kyc-sdk.vercel.app/api/kyc/verifications/${userID}`,
+          `https://z-kyc-sdk-mocha.vercel.app/api/kyc/verifications/${userID}`,
           {
             method: "GET",
             headers: {
-              "x-user-id": userID,
+              "x-user-id": clientid,
               "x-api-key": key,
             },
           }
