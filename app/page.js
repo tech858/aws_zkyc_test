@@ -55,7 +55,7 @@ console.log("Verification data:", data);`}
 
         <input
           type="text"
-          placeholder="API Key"
+          placeholder="Test or production key"
           value={apiKey}
           onChange={(e) => setApiKey(e.target.value)}
           className="w-full border rounded p-2"
@@ -66,10 +66,10 @@ console.log("Verification data:", data);`}
           onChange={(e) => setProcessType(e.target.value)}
           className="w-full border rounded p-2"
         >
-          <option value="OCR">OCR</option>
-          <option value="Liveliness">Liveliness</option>
-          <option value="all">All</option>
-          <option value="">Basic IDV</option>
+          <option className="bg-black text-white" value="">Basic IDV</option>
+          <option className="bg-black text-white" value="OCR">Document verification + OCR</option>
+          <option className="bg-black text-white" value="Liveliness">Document verification + Liveliness</option>
+          <option className="bg-black text-white" value="all">All</option>
         </select>
 
         <input
