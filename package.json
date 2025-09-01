@@ -12,6 +12,7 @@
     "next": "15.5.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "zkyc-lfg": "^2.14.0",
     "zkyc-slt": "^2.7.0"
   },
   "devDependencies": {
