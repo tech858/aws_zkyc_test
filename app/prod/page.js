@@ -38,7 +38,7 @@ const res = await fetch(\`https://z-kyc-sdk.vercel.app/api/kyc/verifications/\${
   },
 });
 
-const data = await res.json();
+const data = await res.json(); 
 console.log("Verification data:", data);`}
         </code>
       </pre>
