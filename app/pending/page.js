@@ -61,10 +61,43 @@ export default function VerificationPage() {
  
 </div>
       <div className="w-full max-w-lg space-y-4">
-   <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h1>Verification Result</h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-    </div>
+<div style={{ padding: "20px", fontFamily: "Arial" }}>
+  <h1>Verification Result</h1>
+
+  <div style={{ marginBottom: "10px" }}>
+    <strong>Status:</strong>{" "}
+    <span style={{ color: data.data.verified ? "green" : "red" }}>
+      {data.data.status} ({data.data.verified ? "Verified" : "Not Verified"})
+    </span>
+  </div>
+
+  <div style={{ marginBottom: "10px" }}>
+    <strong>Applicant ID:</strong> {data.data.applicant_id}
+  </div>
+
+  <div style={{ marginBottom: "10px" }}>
+    <strong>Verification ID:</strong> {data.data.verification_id}
+  </div>
+
+  <h2>Checks</h2>
+  <ul style={{ listStyle: "none", paddingLeft: 0 }}>
+    {Object.entries(data.data.verifications).map(([key, value]) => (
+      <li
+        key={key}
+        style={{
+          marginBottom: "8px",
+          padding: "10px",
+          borderRadius: "8px",
+        }}
+      >
+        <strong style={{ textTransform: "capitalize" }}>{key}:</strong>{" "}
+        <span style={{ color: value.verified ? "green" : "red" }}>
+          {value.verified ? "Verified" : "Failed"}
+        </span>
+      </li>
+    ))}
+  </ul>
+</div>
 
        
 
