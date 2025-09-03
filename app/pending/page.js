@@ -51,52 +51,157 @@ export default function VerificationPage() {
     fetchVerification();
   }, []);
 
-  if (loading) return <p>Loading verification...</p>;
-  if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
+  if (loading) {
+    return (
+      <main className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-8">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-gray-600 border-t-white rounded-full animate-spin mb-4"></div>
+          <p className="text-gray-300 text-lg">Loading verification status...</p>
+        </div>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-8">
+        <div className="max-w-md w-full">
+          <div className="bg-red-900 border border-red-700 rounded-lg p-6 text-center">
+            <div className="w-12 h-12 bg-red-800 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h2 className="text-xl font-medium text-white mb-2">Verification Error</h2>
+            <p className="text-red-200">{error}</p>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  const getStatusColor = (verified) => {
+    return verified ? "text-green-400" : "text-red-400";
+  };
+
+  const getStatusBgColor = (verified) => {
+    return verified ? "bg-green-900 border-green-700" : "bg-red-900 border-red-700";
+  };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-12">
-      <h1 className="text-4xl font-bold mb-8">KYC Process (Pending Page)</h1>
+    <main className="min-h-screen bg-gray-900 py-12 px-4">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-light text-white mb-3">
+            Verification Status
+          </h1>
+          <p className="text-gray-400 text-lg">
+            Review your KYC verification results
+          </p>
+        </div>
 
-      <div className="w-full max-w-lg space-y-4">
-        <div style={{ padding: "20px", fontFamily: "Arial" }}>
-          <h1>Verification Result</h1>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Status Overview Card */}
+          <div className="bg-gray-800 rounded-lg border border-gray-700 p-8">
+            <h2 className="text-2xl font-medium text-white mb-6">Overview</h2>
+            
+            <div className="space-y-6">
+              <div className={`p-4 rounded-lg border ${getStatusBgColor(data?.data?.verified)}`}>
+                <div className="flex items-center space-x-3">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${data?.data?.verified ? 'bg-green-800' : 'bg-red-800'}`}>
+                    {data?.data?.verified ? (
+                      <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    ) : (
+                      <svg className="w-4 h-4 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    )}
+                  </div>
+                  <div>
+                    <p className="text-lg font-medium text-white">
+                      Status: <span className={getStatusColor(data?.data?.verified)}>{data?.data?.status}</span>
+                    </p>
+                    <p className={`text-sm ${getStatusColor(data?.data?.verified)}`}>
+                      {data?.data?.verified ? "Verification Complete" : "Verification Pending"}
+                    </p>
+                  </div>
+                </div>
+              </div>
 
-          <div style={{ marginBottom: "10px" }}>
-            <strong>Status:</strong>{" "}
-            <span style={{ color: data?.data?.verified ? "green" : "red" }}>
-              {data?.data?.status} (
-              {data?.data?.verified ? "Verified" : "Not Verified"})
-            </span>
+              <div className="grid grid-cols-1 gap-4">
+                <div className="bg-gray-900 p-4 rounded-md border border-gray-600">
+                  <p className="text-sm text-gray-400 mb-1">Applicant ID</p>
+                  <p className="text-white font-mono text-sm">{data?.data?.applicant_id}</p>
+                </div>
+
+                <div className="bg-gray-900 p-4 rounded-md border border-gray-600">
+                  <p className="text-sm text-gray-400 mb-1">Verification ID</p>
+                  <p className="text-white font-mono text-sm">{data?.data?.verification_id}</p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div style={{ marginBottom: "10px" }}>
-            <strong>Applicant ID:</strong> {data?.data?.applicant_id}
+          {/* Verification Checks Card */}
+          <div className="bg-gray-800 rounded-lg border border-gray-700 p-8">
+            <h2 className="text-2xl font-medium text-white mb-6">Verification Checks</h2>
+            
+            <div className="space-y-4">
+              {data?.data?.verifications ? (
+                Object.entries(data.data.verifications).map(([key, value]) => (
+                  <div
+                    key={key}
+                    className={`p-4 rounded-lg border ${getStatusBgColor(value.verified)}`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-3">
+                        <div className={`w-6 h-6 rounded-full flex items-center justify-center ${value.verified ? 'bg-green-800' : 'bg-red-800'}`}>
+                          {value.verified ? (
+                            <svg className="w-3 h-3 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            </svg>
+                          ) : (
+                            <svg className="w-3 h-3 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                            </svg>
+                          )}
+                        </div>
+                        <span className="text-white font-medium capitalize">
+                          {key.replace(/_/g, ' ')}
+                        </span>
+                      </div>
+                      <span className={`text-sm font-medium ${getStatusColor(value.verified)}`}>
+                        {value.verified ? "Passed" : "Failed"}
+                      </span>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="text-center py-8">
+                  <p className="text-gray-400">No verification checks available</p>
+                </div>
+              )}
+            </div>
           </div>
+        </div>
 
-          <div style={{ marginBottom: "10px" }}>
-            <strong>Verification ID:</strong> {data?.data?.verification_id}
-          </div>
-
-          <h2>Checks</h2>
-          <ul style={{ listStyle: "none", paddingLeft: 0 }}>
-            {data?.data?.verifications &&
-              Object.entries(data.data.verifications).map(([key, value]) => (
-                <li
-                  key={key}
-                  style={{
-                    marginBottom: "8px",
-                    padding: "10px",
-                    borderRadius: "8px",
-                  }}
-                >
-                  <strong style={{ textTransform: "capitalize" }}>{key}:</strong>{" "}
-                  <span style={{ color: value.verified ? "green" : "red" }}>
-                    {value.verified ? "Verified" : "Failed"}
-                  </span>
-                </li>
-              ))}
-          </ul>
+        {/* Action Buttons */}
+        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            onClick={() => window.location.reload()}
+            className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500"
+          >
+            Refresh Status
+          </button>
+          <button
+            onClick={() => window.history.back()}
+            className="px-6 py-3 bg-white hover:bg-gray-100 text-gray-900 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400"
+          >
+            Go Back
+          </button>
         </div>
       </div>
     </main>

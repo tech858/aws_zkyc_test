@@ -15,21 +15,35 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-12">
-      <h1 className="text-4xl font-bold mb-8">KYC Process (Dynamic Inputs)</h1>
-      <div className="w-full max-w-lg space-y-4">
-        <div className="">
-      <h2 className="text-xl font-bold mb-4">pending page requirements</h2>
-      <pre className="bg-black w-ful text-white p-4 rounded-lg overflow-x-auto">
-        <code>
-{`
-Get your ID
+    <main className="min-h-screen bg-gray-900 py-12 px-4">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-light text-white mb-3">
+            KYC Dynamic Configuration
+          </h1>
+          <p className="text-gray-400 text-lg">
+            Configure and test your verification process with custom parameters
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Integration Guide Card */}
+          <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 p-8 order-2 lg:order-1">
+            <h2 className="text-xl font-medium text-white mb-6">
+              Pending Page Integration
+            </h2>
+            <p className="text-sm text-gray-400 mb-4">
+              Implement this code on your pending page to check verification status:
+            </p>
+            
+            <div className="bg-black rounded-md p-4 overflow-x-auto border border-gray-700">
+              <pre className="text-sm text-gray-100">
+                <code>
+{`// Extract user ID from URL parameters
 const userID = new URL(window.location.href).searchParams.get("id");
 
-
-//Check the state of the verification
-
-
+// Check verification status
 const res = await fetch(\`https://z-kyc-sdk.vercel.app/api/kyc/verifications/\${userID}\`, {
   method: "GET",
   headers: {
@@ -40,60 +54,131 @@ const res = await fetch(\`https://z-kyc-sdk.vercel.app/api/kyc/verifications/\${
 
 const data = await res.json(); 
 console.log("Verification data:", data);`}
-        </code>
-      </pre>
-    </div>
-</div>
-      <div className="w-full max-w-lg space-y-4">
-        <input
-          type="text"
-          placeholder="Client ID"
-          value={clientId}
-          onChange={(e) => setClientId(e.target.value)}
-          className="w-full border rounded p-2"
-        />
+                </code>
+              </pre>
+            </div>
 
-        <input
-          type="text"
-          placeholder="API Key"
-          value={apiKey}
-          onChange={(e) => setApiKey(e.target.value)}
-          className="w-full border rounded p-2"
-        />
+            <div className="mt-6 p-4 bg-gray-900 rounded-md border border-gray-600">
+              <h3 className="text-sm font-medium text-gray-300 mb-2">Implementation Notes:</h3>
+              <ul className="text-xs text-gray-400 space-y-1">
+                <li>• Ensure the pending URL matches your implementation</li>
+                <li>• Use the same API key for both initialization and status checks</li>
+                <li>• Handle loading states while checking verification status</li>
+              </ul>
+            </div>
+          </div>
 
-        <select
-          value={processType}
-          onChange={(e) => setProcessType(e.target.value)}
-          className="w-full border rounded p-2"
-        >
-          <option value="OCR">OCR</option>
-          <option value="Liveliness">Liveliness</option>
-          <option value="all">All</option>
-          <option value="">Basic IDV</option>
-        </select>
+          {/* Configuration Form Card */}
+          <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 p-8 order-1 lg:order-2">
+            <h2 className="text-xl font-medium text-white mb-6">Configuration</h2>
+            
+            <div className="space-y-5">
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Client ID
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter your client identifier"
+                  value={clientId}
+                  onChange={(e) => setClientId(e.target.value)}
+                  className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
+                />
+              </div>
 
-        <input
-          type="text"
-          placeholder="Failure URL"
-          value={failureUrl}
-          onChange={(e) => setFailureUrl(e.target.value)}
-          className="w-full border rounded p-2"
-        />
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  API Key
+                </label>
+                <input
+                  type="password"
+                  placeholder="Enter your API key"
+                  value={apiKey}
+                  onChange={(e) => setApiKey(e.target.value)}
+                  className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
+                />
+              </div>
 
-        <input
-          type="text"
-          placeholder="Pending URL"
-          value={pendingUrl}
-          onChange={(e) => setPendingUrl(e.target.value)}
-          className="w-full border rounded p-2"
-        />
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Verification Type
+                </label>
+                <select
+                  value={processType}
+                  onChange={(e) => setProcessType(e.target.value)}
+                  className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
+                >
+                  <option value="">Basic IDV</option>
+                  <option value="OCR">Document verification + OCR</option>
+                  <option value="Liveliness">Document verification + Liveliness</option>
+                  <option value="all">Complete verification suite</option>
+                </select>
+              </div>
 
-        <button
-          onClick={startKYC}
-          className="w-full bg-black text-white p-3 mb-3 text-2xl font-semibold"
-        >
-          Start KYC Process →
-        </button>
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Failure Redirect URL
+                </label>
+                <input
+                  type="url"
+                  placeholder="https://yoursite.com/failure"
+                  value={failureUrl}
+                  onChange={(e) => setFailureUrl(e.target.value)}
+                  className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Pending Redirect URL
+                </label>
+                <input
+                  type="url"
+                  placeholder="https://yoursite.com/pending"
+                  value={pendingUrl}
+                  onChange={(e) => setPendingUrl(e.target.value)}
+                  className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
+                />
+              </div>
+
+              <div className="pt-4">
+                <button
+                  onClick={startKYC}
+                  className="w-full bg-white hover:bg-gray-100 text-gray-900 font-medium py-4 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-800"
+                >
+                  Initialize KYC Process →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Current Configuration Summary */}
+        <div className="mt-8 bg-gray-800 rounded-lg border border-gray-700 p-6">
+          <h3 className="text-lg font-medium text-white mb-4">Current Configuration Summary</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+            <div>
+              <span className="block text-gray-400 mb-1">Client ID:</span>
+              <span className="text-gray-300">{clientId || "Not set"}</span>
+            </div>
+            <div>
+              <span className="block text-gray-400 mb-1">API Key:</span>
+              <span className="text-gray-300">{apiKey ? "••••••••" : "Not set"}</span>
+            </div>
+            <div>
+              <span className="block text-gray-400 mb-1">Verification Type:</span>
+              <span className="text-gray-300">{processType || "Basic IDV"}</span>
+            </div>
+            <div>
+              <span className="block text-gray-400 mb-1">Failure URL:</span>
+              <span className="text-gray-300 break-all">{failureUrl || "Not set"}</span>
+            </div>
+            <div>
+              <span className="block text-gray-400 mb-1">Pending URL:</span>
+              <span className="text-gray-300 break-all">{pendingUrl || "Not set"}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );
