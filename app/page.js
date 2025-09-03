@@ -110,6 +110,7 @@ export default function Home() {
         </div>
 
         {/* Integration Guide Card */}
+        {/*
         <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 p-8">
           <h2 className="text-lg font-medium text-white mb-4">
             Pending Page Integration
@@ -139,6 +140,7 @@ console.log("Verification data:", data);`}
             </pre>
           </div>
         </div>
+        */}
       </div>
     </main>
   );
