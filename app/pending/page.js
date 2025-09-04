@@ -80,13 +80,22 @@ export default function VerificationPage() {
     );
   }
 
-  const getStatusColor = (verified) => {
-    return verified ? "text-green-400" : "text-red-400";
+  // Decide color for text
+  const getStatusColor = (status, verified) => {
+    if (status === "pending") return "text-orange-400";
+    if (status === "completed" && verified) return "text-green-400";
+    if (status === "completed" && !verified) return "text-red-400";
+    return "text-gray-400"; // fallback
   };
 
-  const getStatusBgColor = (verified) => {
-    return verified ? "bg-green-900 border-green-700" : "bg-red-900 border-red-700";
+  // Decide background/border
+  const getStatusBgColor = (status, verified) => {
+    if (status === "pending") return "bg-orange-900 border-orange-700";
+    if (status === "completed" && verified) return "bg-green-900 border-green-700";
+    if (status === "completed" && !verified) return "bg-red-900 border-red-700";
+    return "bg-gray-800 border-gray-700"; // fallback
   };
+
 console.log(data)
   return (
     <main className="min-h-screen bg-gray-900 py-12 px-4">
@@ -107,29 +116,82 @@ console.log(data)
             <h2 className="text-2xl font-medium text-white mb-6">Overview</h2>
             
             <div className="space-y-6">
-              <div className={`p-4 rounded-lg border ${getStatusBgColor(data?.data?.status ==="complete")}`}>
-                <div className="flex items-center space-x-3">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center  ${data?.data?.status ==="complete" ? 'bg-green-800' : 'bg-orange-400'}`}>
-                    {data?.data?.status ==="complete" ? (
-                      <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    ) : (
-                      <svg className="w-4 h-4 text-red-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    )}
-                  </div>
-                  <div>
-                    <p className="text-lg font-medium text-white">
-                      Status: <span className={getStatusColor(data?.data?.status ==="complete")}>{data?.data?.status}</span>
-                    </p>
-                    <p className={`text-sm ${getStatusColor(data?.data?.status ==="complete")}`}>
-                      {data?.data?.verifications.document.comment}
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <div
+  className={`p-4 rounded-lg border ${getStatusBgColor(
+    data?.data?.status,
+    data?.data?.verified
+  )}`}
+>
+  <div className="flex items-center space-x-3">
+    <div
+      className={`w-8 h-8 rounded-full flex items-center justify-center ${getStatusBgColor(
+        data?.data?.status,
+        data?.data?.verified
+      ).split(" ")[0]}`}
+    >
+      {data?.data?.status === "completed" && data?.data?.verified ? (
+        <svg
+          className="w-4 h-4 text-green-400"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fillRule="evenodd"
+            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 
+            12.586l7.293-7.293a1 1 0 011.414 0z"
+            clipRule="evenodd"
+          />
+        </svg>
+      ) : data?.data?.status === "pending" ? (
+        <svg
+          className="w-4 h-4 text-orange-400"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <circle cx="10" cy="10" r="5" />
+        </svg>
+      ) : (
+        <svg
+          className="w-4 h-4 text-red-400"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fillRule="evenodd"
+            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 
+            1 0 111.414 1.414L11.414 10l4.293 
+            4.293a1 1 0 01-1.414 1.414L10 
+            11.414l-4.293 4.293a1 1 0 
+            01-1.414-1.414L8.586 10 4.293 
+            5.707a1 1 0 010-1.414z"
+            clipRule="evenodd"
+          />
+        </svg>
+      )}
+    </div>
+    <div>
+      <p className="text-lg font-medium text-white">
+        Status:{" "}
+        <span
+          className={getStatusColor(
+            data?.data?.status,
+            data?.data?.verified
+          )}
+        >
+          {data?.data?.status}
+        </span>
+      </p>
+      <p
+        className={`text-sm ${getStatusColor(
+          data?.data?.status,
+          data?.data?.verified
+        )}`}
+      >
+        {data?.data?.verifications?.document?.comment}
+      </p>
+    </div>
+  </div>
+</div>
 
               <div className="grid grid-cols-1 gap-4">
                 <div className="bg-gray-900 p-4 rounded-md border border-gray-600">
