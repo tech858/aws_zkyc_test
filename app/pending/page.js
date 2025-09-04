@@ -87,7 +87,7 @@ export default function VerificationPage() {
   const getStatusBgColor = (verified) => {
     return verified ? "bg-green-900 border-green-700" : "bg-red-900 border-red-700";
   };
-
+console.log(data)
   return (
     <main className="min-h-screen bg-gray-900 py-12 px-4">
       <div className="max-w-4xl mx-auto">
@@ -107,10 +107,10 @@ export default function VerificationPage() {
             <h2 className="text-2xl font-medium text-white mb-6">Overview</h2>
             
             <div className="space-y-6">
-              <div className={`p-4 rounded-lg border ${getStatusBgColor(data?.data?.verified)}`}>
+              <div className={`p-4 rounded-lg border ${getStatusBgColor(data?.data?.status ==="complete")}`}>
                 <div className="flex items-center space-x-3">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${data?.data?.verified ? 'bg-green-800' : 'bg-red-800'}`}>
-                    {data?.data?.verified ? (
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center  ${data?.data?.status ==="complete" ? 'bg-green-800' : 'bg-orange-400'}`}>
+                    {data?.data?.status ==="complete" ? (
                       <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
@@ -122,10 +122,10 @@ export default function VerificationPage() {
                   </div>
                   <div>
                     <p className="text-lg font-medium text-white">
-                      Status: <span className={getStatusColor(data?.data?.verified)}>{data?.data?.status}</span>
+                      Status: <span className={getStatusColor(data?.data?.status ==="complete")}>{data?.data?.status}</span>
                     </p>
-                    <p className={`text-sm ${getStatusColor(data?.data?.verified)}`}>
-                      {data?.data?.verified ? "Verification Complete" : "Verification Pending"}
+                    <p className={`text-sm ${getStatusColor(data?.data?.status ==="complete")}`}>
+                      {data?.data?.verifications.document.comment}
                     </p>
                   </div>
                 </div>
