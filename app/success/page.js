@@ -77,7 +77,7 @@ export default function Success() {
 
                 {/* Next Steps Card */}
                 <div className="bg-gray-800 rounded-lg border border-gray-700 p-6 w-full">
-                    <h3 className="text-lg font-medium text-white mb-4">What's Next?</h3>
+                    <h3 className="text-lg font-medium text-white mb-4">What is Next?</h3>
                     <div className="space-y-3 text-sm">
                         <div className="flex items-start space-x-3">
                             <div className="w-2 h-2 bg-gray-400 rounded-full mt-2 flex-shrink-0"></div>
