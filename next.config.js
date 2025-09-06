@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/aws',
-  assetPrefix: '/aws',
+  basePath: '',
+  assetPrefix: '',
 };
 
 module.exports = nextConfig;
