@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { ZKYCProcess } from "zkyc-lfg";
 
-export default function RootRedirect() {
+export default function Home() {
   // State for inputs
   const [clientId, setClientId] = useState("");
   const [apiKey, setApiKey] = useState("");
