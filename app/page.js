@@ -66,6 +66,7 @@ export default function Home() {
                 <option value="">Basic Document verification</option>
                 <option value="OCR">Document verification + OCR</option>
                 <option value="Liveliness">Document verification + Liveliness</option>
+                <option value="Face">Document verification + Facematching</option>
                 <option value="all">Complete verification suite</option>
               </select>
             </div>
