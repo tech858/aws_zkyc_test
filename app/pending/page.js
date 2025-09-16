@@ -8,8 +8,8 @@ export default function VerificationPage() {
   const [error, setError] = useState(null);
 
   // Replace with your real API key and client id
-  const clientid = "df232ee0-b0e9-479d-9d4e-bb97e4d77472";
-  const key = "prod_a01a07c7bba7b2413c1186d6305636f8eb5c8a7d7b30a194";
+  const clientid = "6e1ec942-5990-4674-af0d-628b556e1331";
+  const key = "prod_a0250caaadea9e59608db5e61714f5fd2b9d5246c3e0e212";
 
   useEffect(() => {
     async function fetchVerification() {
