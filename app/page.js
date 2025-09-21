@@ -63,11 +63,9 @@ export default function Home() {
                 onChange={(e) => setProcessType(e.target.value)}
                 className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
               >
-                <option value="">Basic Document verification</option>
                 <option value="OCR">Document verification + OCR</option>
-                <option value="Liveliness">Document verification + Liveliness</option>
-                <option value="Face">Document verification + Facematching</option>
-                <option value="all">Complete verification suite</option>
+                <option value="FaceLive">Document verification + Facematching</option>
+                <option value="IDV">Complete verification suite</option>
               </select>
             </div>
 
