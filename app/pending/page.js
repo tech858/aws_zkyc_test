@@ -53,10 +53,10 @@ export default function VerificationPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-8">
+      <main className="min-h-screen bg-white flex flex-col items-center justify-center p-8">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-gray-600 border-t-white rounded-full animate-spin mb-4"></div>
-          <p className="text-gray-300 text-lg">Loading verification status...</p>
+          <p className="text-black text-lg">Loading verification status...</p>
         </div>
       </main>
     );
@@ -64,7 +64,7 @@ export default function VerificationPage() {
 
   if (error) {
     return (
-      <main className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-8">
+      <main className="min-h-screen bg-white flex flex-col items-center justify-center p-8">
         <div className="max-w-md w-full">
           <div className="bg-red-900 border border-red-700 rounded-lg p-6 text-center">
             <div className="w-12 h-12 bg-red-800 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -72,7 +72,7 @@ export default function VerificationPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h2 className="text-xl font-medium text-white mb-2">Verification Error</h2>
+            <h2 className="text-xl font-medium text-black mb-2">Verification Error</h2>
             <p className="text-red-200">{error}</p>
           </div>
         </div>
@@ -98,11 +98,11 @@ export default function VerificationPage() {
 
 console.log(data)
   return (
-    <main className="min-h-screen bg-gray-900 py-12 px-4">
+    <main className="min-h-screen bg-white py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-light text-white mb-3">
+          <h1 className="text-4xl font-light text-black mb-3">
             Verification Status
           </h1>
           <p className="text-gray-400 text-lg">
@@ -113,7 +113,7 @@ console.log(data)
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Status Overview Card */}
           <div className="bg-gray-800 rounded-lg border border-gray-700 p-8">
-            <h2 className="text-2xl font-medium text-white mb-6">Overview</h2>
+            <h2 className="text-2xl font-medium text-black mb-6">Overview</h2>
             
             <div className="space-y-6">
               <div
@@ -170,7 +170,7 @@ console.log(data)
       )}
     </div>
     <div>
-      <p className="text-lg font-medium text-white">
+      <p className="text-lg font-medium text-black">
         Status:{" "}
         <span
           className={getStatusColor(
@@ -194,14 +194,14 @@ console.log(data)
 </div>
 
               <div className="grid grid-cols-1 gap-4">
-                <div className="bg-gray-900 p-4 rounded-md border border-gray-600">
+                <div className="bg-white p-4 rounded-md border border-gray-600">
                   <p className="text-sm text-gray-400 mb-1">Applicant ID</p>
-                  <p className="text-white font-mono text-sm">{data?.data?.applicant_id}</p>
+                  <p className="text-black font-mono text-sm">{data?.data?.applicant_id}</p>
                 </div>
 
-                <div className="bg-gray-900 p-4 rounded-md border border-gray-600">
+                <div className="bg-white p-4 rounded-md border border-gray-600">
                   <p className="text-sm text-gray-400 mb-1">Verification ID</p>
-                  <p className="text-white font-mono text-sm">{data?.data?.verification_id}</p>
+                  <p className="text-black font-mono text-sm">{data?.data?.verification_id}</p>
                 </div>
               </div>
             </div>
@@ -209,7 +209,7 @@ console.log(data)
 
           {/* Verification Checks Card */}
           <div className="bg-gray-800 rounded-lg border border-gray-700 p-8">
-            <h2 className="text-2xl font-medium text-white mb-6">Verification Checks</h2>
+            <h2 className="text-2xl font-medium text-black mb-6">Verification Checks</h2>
             
             <div className="space-y-4">
               {data?.data?.verifications ? (
@@ -231,7 +231,7 @@ console.log(data)
                             </svg>
                           )}
                         </div>
-                        <span className="text-white font-medium capitalize">
+                        <span className="text-black font-medium capitalize">
                           {key.replace(/_/g, ' ')}
                         </span>
                       </div>
@@ -254,7 +254,7 @@ console.log(data)
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <button
             onClick={() => window.location.reload()}
-            className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500"
+            className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-black rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500"
           >
             Refresh Status
           </button>

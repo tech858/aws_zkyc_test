@@ -15,21 +15,21 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-900 py-12 px-4">
+    <main className="min-h-screen bg-white py-12 px-4">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-3xl font-light text-white mb-2">
+          <h1 className="text-3xl font-light text-black mb-2">
             KYC Verification Setup
           </h1>
           <p className="text-gray-400">Configure your identity verification process</p>
         </div>
 
         {/* Main Form Card */}
-        <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 p-8 mb-8">
+        <div className="bg-white rounded-lg shadow-xl border border-gray-700 p-8 mb-8">
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Client ID
               </label>
               <input
@@ -37,12 +37,12 @@ export default function Home() {
                 placeholder="Enter your client identifier"
                 value={clientId}
                 onChange={(e) => setClientId(e.target.value)}
-                className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
+                className="w-full px-4 py-3 bg-white border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 API Key
               </label>
               <input
@@ -50,28 +50,27 @@ export default function Home() {
                 placeholder="Test or production key"
                 value={apiKey}
                 onChange={(e) => setApiKey(e.target.value)}
-                className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
+                className="w-full px-4 py-3 bg-white border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Verification Type
               </label>
               <select
                 value={processType}
                 onChange={(e) => setProcessType(e.target.value)}
-                className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
+                className="w-full px-4 py-3 bg-white border border-gray-600 rounded-md text-black focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
               >
                 <option value="OCR">Document verification + OCR</option>
-                <option value="FaceLive">Document verification + Facematching</option>
                 <option value="IDV">Complete verification suite</option>
               </select>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Failure Redirect URL
                 </label>
                 <input
@@ -79,12 +78,12 @@ export default function Home() {
                   placeholder="https://yoursite.com/failure"
                   value={failureUrl}
                   onChange={(e) => setFailureUrl(e.target.value)}
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
+                  className="w-full px-4 py-3 bg-white border border-gray-600 rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Pending Redirect URL
                 </label>
                 <input
@@ -92,7 +91,7 @@ export default function Home() {
                   placeholder="https://yoursite.com/pending"
                   value={pendingUrl}
                   onChange={(e) => setPendingUrl(e.target.value)}
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
+                  className="w-full px-4 py-3 bg-white border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
                 />
               </div>
             </div>
@@ -100,7 +99,7 @@ export default function Home() {
             <div className="pt-4">
               <button
                 onClick={startKYC}
-                className="w-full bg-white hover:bg-gray-100 text-gray-900 font-medium py-4 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-800"
+                className="w-full bg-black hover:bg-gray-900 text-white font-medium py-4 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-800"
               >
                 Initialize KYC Process
               </button>
