@@ -37,7 +37,7 @@ export default function Home() {
                 placeholder="Enter your client identifier"
                 value={clientId}
                 onChange={(e) => setClientId(e.target.value)}
-                className="w-full px-4 py-3 bg-white border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
+                className="w-full px-4 py-3 bg-white border border-gray-600 rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
               />
             </div>
 
@@ -50,7 +50,7 @@ export default function Home() {
                 placeholder="Test or production key"
                 value={apiKey}
                 onChange={(e) => setApiKey(e.target.value)}
-                className="w-full px-4 py-3 bg-white border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
+                className="w-full px-4 py-3 bg-white border border-gray-600 rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
               />
             </div>
 
@@ -91,7 +91,7 @@ export default function Home() {
                   placeholder="https://yoursite.com/pending"
                   value={pendingUrl}
                   onChange={(e) => setPendingUrl(e.target.value)}
-                  className="w-full px-4 py-3 bg-white border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
+                  className="w-full px-4 py-3 bg-white border border-gray-600 rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
                 />
               </div>
             </div>
@@ -99,7 +99,7 @@ export default function Home() {
             <div className="pt-4">
               <button
                 onClick={startKYC}
-                className="w-full bg-black hover:bg-gray-900 text-white font-medium py-4 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-800"
+                className="w-full bg-black hover:bg-gray-900 text-black font-medium py-4 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-800"
               >
                 Initialize KYC Process
               </button>
@@ -110,7 +110,7 @@ export default function Home() {
         {/* Integration Guide Card */}
         {/*
         <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 p-8">
-          <h2 className="text-lg font-medium text-white mb-4">
+          <h2 className="text-lg font-medium text-black mb-4">
             Pending Page Integration
           </h2>
           <p className="text-sm text-gray-400 mb-4">
