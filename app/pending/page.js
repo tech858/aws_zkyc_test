@@ -8,8 +8,8 @@ export default function VerificationPage() {
   const [error, setError] = useState(null);
 
   // Replace with your real API key and client id
-  const clientid = "6e1ec942-5990-4674-af0d-628b556e1331";
-  const key = "prod_a0250caaadea9e59608db5e61714f5fd2b9d5246c3e0e212";
+  const clientid = "676d1a69-902e-479d-ac14-c4a162d2ed27";
+  const key = "prod_7729994273a96d9a5edc4ab5a545daa7098c8b4deeea8de2";
 
   useEffect(() => {
     async function fetchVerification() {
@@ -112,7 +112,7 @@ console.log(data)
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Status Overview Card */}
-          <div className="bg-gray-800 rounded-lg border border-gray-700 p-8">
+          <div className="bg-white  border border-gray-700 p-8">
             <h2 className="text-2xl font-medium text-black mb-6">Overview</h2>
             
             <div className="space-y-6">
@@ -208,17 +208,17 @@ console.log(data)
           </div>
 
           {/* Verification Checks Card */}
-          <div className="bg-gray-800 rounded-lg border border-gray-700 p-8">
+          <div className="bg-white text-black border border-gray-700 p-8">
             <h2 className="text-2xl font-medium text-black mb-6">Verification Checks</h2>
             
-            <div className="space-y-4">
+            <div className="space-y-4 ">
               {data?.data?.verifications ? (
                 Object.entries(data.data.verifications).map(([key, value]) => (
                   <div
                     key={key}
-                    className={`p-4 rounded-lg border ${getStatusBgColor(value.verified)}`}
+                    className={`bg-white p-4 rounded-lg border ${getStatusBgColor(value.verified)}`}
                   >
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center  justify-between">
                       <div className="flex items-center space-x-3">
                         <div className={`w-6 h-6 rounded-full flex items-center justify-center ${value.verified ? 'bg-green-800' : 'bg-red-800'}`}>
                           {value.verified ? (
@@ -254,7 +254,7 @@ console.log(data)
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <button
             onClick={() => window.location.reload()}
-            className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-black rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500"
+            className="px-6 py-3 bg-black hover:bg-gray-600 text-white rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500"
           >
             Refresh Status
           </button>

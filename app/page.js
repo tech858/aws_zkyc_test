@@ -13,7 +13,6 @@ export default function Home() {
   const startKYC = () => {
     ZKYCProcess(clientId, apiKey, processType, failureUrl, pendingUrl);
   };
-
   return (
     <main className="min-h-screen bg-white py-12 px-4">
       <div className="max-w-2xl mx-auto">
@@ -99,7 +98,7 @@ export default function Home() {
             <div className="pt-4">
               <button
                 onClick={startKYC}
-                className="w-full bg-black hover:bg-gray-900 text-black font-medium py-4 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-800"
+                className="w-full bg-black  hover:bg-gray-900 text-white font-medium py-4 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-800"
               >
                 Initialize KYC Process
               </button>
