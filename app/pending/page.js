@@ -8,8 +8,8 @@ export default function VerificationPage() {
   const [error, setError] = useState(null);
 
   // Replace with your real API key and client id
-  const clientid = "User ID";
-  const key = "Key";
+  const clientid = "d9d3c882-da66-4d30-b2b9-2847aa98afed";
+  const key = "prod_7e1032f7074be12e23917bc5b9934659dd7bbe93fcccf79e";
 
   useEffect(() => {
     async function fetchVerification() {
@@ -24,7 +24,7 @@ export default function VerificationPage() {
         }
 
         const res = await fetch(
-          `https://z-kyc-sdk-mocha.vercel.app/api/kyc/verifications/${userID}`,
+          `http://localhost:3000/api/kyc/verifications/${userID}`,
           {
             method: "GET",
             headers: {
