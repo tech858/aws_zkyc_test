@@ -24,7 +24,7 @@ export default function VerificationPage() {
         }
 
         const res = await fetch(
-          `http://localhost:3000/api/kyc/verifications/${userID}`,
+          `https://sdk.zkyc.tech/api/kyc/verifications/${userID}`,
           {
             method: "GET",
             headers: {
