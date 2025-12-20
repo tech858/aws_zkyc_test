@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react";
-import { ZKYCProcess } from "zkyc-lfg";
+import { ZKYCProcess } from "zkyc-sdk-package";
 
 export default function Home() {
   // State for inputs
@@ -11,7 +11,7 @@ export default function Home() {
   const [pendingUrl, setPendingUrl] = useState("");
 
   const startKYC = () => {
-    ZKYCProcess(clientId, apiKey, processType, failureUrl, pendingUrl);
+    ZKYCProcess( apiKey, failureUrl, pendingUrl);
   };
   return (
     <main className="min-h-screen bg-white py-12 px-4">
