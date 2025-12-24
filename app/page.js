@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react";
-
+import KYCButton from "./components/KYCbutton";
 export default function Home() {
   // State for inputs
   const [apiKey, setApiKey] = useState("");
@@ -51,7 +51,7 @@ export default function Home() {
       }
 
       // Build SDK URL with token
-      const sdkUrl = new URL("http://localhost:3001/");
+      const sdkUrl = new URL("http://sdk.app.zkyc/");
       sdkUrl.searchParams.set("apikey", token);
       sdkUrl.searchParams.set("failurePage", failureUrl);
       sdkUrl.searchParams.set("pending", pendingUrl);
@@ -126,7 +126,7 @@ export default function Home() {
                 />
               </div>
             </div>
-
+            <KYCButton />
             <div>
               <label className="block text-sm font-medium text-black mb-2">
                 Platform API URL (Optional)
