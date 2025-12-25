@@ -66,18 +66,18 @@ export default function Home() {
   };
   // END: Link generation logic (easy to remove later)
   return (
-    <main className="min-h-screen bg-white py-12 px-4">
-      <div className="max-w-2xl mx-auto">
+    <main className="min-h-screen py-12 hero-bg  px-4 flex items-center justify-center">
+      <div className="max-w-2xl mx-auto text-white z-10">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-3xl font-light text-black mb-2">
+          <h1 className="text-3xl font-light mb-2">
             KYC Verification Setup
           </h1>
           <p className="text-gray-400">Configure your identity verification process</p>
         </div>
 
         {/* Main Form Card */}
-        <div className="bg-white rounded-lg shadow-xl border border-gray-700 p-8 mb-8">
+        <div className=" rounded-lg shadow-xl  bg-white/5 backdrop-blur-2xl border border-white/10 p-8 mb-8">
           <div className="space-y-6">
             {error && (
               <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md">
@@ -86,7 +86,7 @@ export default function Home() {
             )}
 
             <div>
-              <label className="block text-sm font-medium text-black mb-2">
+              <label className="block text-sm font-medium text-white mb-2">
                 API Key <span className="text-red-500">*</span>
               </label>
               <input
@@ -94,14 +94,14 @@ export default function Home() {
                 placeholder="test_xxx or prod_xxx"
                 value={apiKey}
                 onChange={(e) => setApiKey(e.target.value)}
-                className="w-full px-4 py-3 bg-white border border-gray-600 rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
+                className="w-full px-4 py-3 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
               />
               <p className="text-xs text-gray-500 mt-1">Your zKYC API key with test_ or prod_ prefix</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-black mb-2">
+                <label className="block text-sm font-medium text-white mb-2">
                   Failure Redirect URL <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -109,12 +109,12 @@ export default function Home() {
                   placeholder="https://yoursite.com/failure"
                   value={failureUrl}
                   onChange={(e) => setFailureUrl(e.target.value)}
-                  className="w-full px-4 py-3 bg-white border border-gray-600 rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
+                  className="w-full px-4 py-3 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-black mb-2">
+                <label className="block text-sm font-medium text-white mb-2">
                   Success Redirect URL <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -122,7 +122,7 @@ export default function Home() {
                   placeholder="https://yoursite.com/success"
                   value={pendingUrl}
                   onChange={(e) => setPendingUrl(e.target.value)}
-                  className="w-full px-4 py-3 bg-white border border-gray-600 rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
+                  className="w-full px-4 py-3 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
                 />
               </div>
             </div>
@@ -138,7 +138,7 @@ export default function Home() {
         {/* Integration Guide Card */}
         {/*
         <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 p-8">
-          <h2 className="text-lg font-medium text-black mb-4">
+          <h2 className="text-lg font-medium text-white mb-4">
             Pending Page Integration
           </h2>
           <p className="text-sm text-gray-400 mb-4">

@@ -15,4 +15,4 @@ export default function KYCButton(apiKey) {
     }
   };
 
-  return <button className="w-full bg-black text-white py-3"onClick={handleKYC}>Start KYC Verification</button>;}
+  return <button className="w-full bg-white text-black rounded-xl py-3"onClick={handleKYC}>Start KYC Verification</button>;}
