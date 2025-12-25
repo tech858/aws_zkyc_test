@@ -1,13 +1,13 @@
 import React from 'react';
 import { ZKYCProcess } from "zkyc-sdk-package";
 
-export default function KYCButton() {
+export default function KYCButton(apiKey) {
   const handleKYC = async () => {
     try {
       await ZKYCProcess({
-        apiKey: "prod_bdhZewRkyHQpWNSHmDIMwwLgxOMuAXupzJivNMUONARXKhIWcLQGgiATjRIzpRNB",
-        failurePage: `${window.location.origin}/kyc-failed`,
-        pendingPage: `${window.location.origin}/kyc-pending`,
+        apiKey: apiKey.apiKey,
+        failurePage: apiKey.failurePage,
+        successPage: apiKey.successPage,
       });
     } catch (error) {
       console.error('KYC initiation failed:', error);
@@ -15,4 +15,4 @@ export default function KYCButton() {
     }
   };
 
-  return <button onClick={handleKYC}>Start KYC Verification</button>;}
+  return <button className="w-full bg-black text-white py-3"onClick={handleKYC}>Start KYC Verification</button>;}

@@ -51,7 +51,7 @@ export default function Home() {
       }
 
       // Build SDK URL with token
-      const sdkUrl = new URL("http://sdk.app.zkyc/");
+      const sdkUrl = new URL("https://sdk.zkyc.tech/");
       sdkUrl.searchParams.set("apikey", token);
       sdkUrl.searchParams.set("failurePage", failureUrl);
       sdkUrl.searchParams.set("pending", pendingUrl);
@@ -126,61 +126,11 @@ export default function Home() {
                 />
               </div>
             </div>
-            <KYCButton />
-            <div>
-              <label className="block text-sm font-medium text-black mb-2">
-                Platform API URL (Optional)
-              </label>
-              <input
-                type="url"
-                placeholder="https://api.zkyc.tech (default)"
-                value={platformApiUrl}
-                onChange={(e) => setPlatformApiUrl(e.target.value)}
-                className="w-full px-4 py-3 bg-white border border-gray-600 rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
-              />
-              <p className="text-xs text-gray-500 mt-1">Optional: Custom platform API URL (defaults to https://api.zkyc.tech)</p>
-            </div>
-
-            {/* START: Link generation section (easy to remove later) */}
-            <div className="pt-4">
-              <button
-                onClick={generateLink}
-                disabled={loading}
-                className="w-full bg-black hover:bg-gray-900 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-medium py-4 px-6 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-800"
-              >
-                {loading ? "Generating Link..." : "Generate KYC Link"}
-              </button>
-            </div>
-
-            {generatedLink && (
-              <div className="pt-4 border-t border-gray-200">
-                <label className="block text-sm font-medium text-black mb-2">
-                  Generated KYC Link
-                </label>
-                <div className="flex gap-2">
-                  <input
-                    type="text"
-                    readOnly
-                    value={generatedLink}
-                    className="flex-1 px-4 py-3 bg-gray-50 border border-gray-300 rounded-md text-black text-sm font-mono focus:outline-none"
-                  />
-                  <button
-                    onClick={() => navigator.clipboard.writeText(generatedLink)}
-                    className="px-4 py-3 bg-gray-100 hover:bg-gray-200 text-black font-medium rounded-md transition-colors"
-                  >
-                    Copy
-                  </button>
-                </div>
-                <a
-                  href={generatedLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-2 inline-block text-sm text-blue-600 hover:text-blue-800"
-                >
-                  Open Link →
-                </a>
-              </div>
-            )}
+            <KYCButton 
+            apiKey={apiKey}
+            failurePage={failureUrl}
+            successPage={pendingUrl}/>
+           
             {/* END: Link generation section (easy to remove later) */}
           </div>
         </div>
