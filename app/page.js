@@ -115,11 +115,11 @@ export default function Home() {
 
               <div>
                 <label className="block text-sm font-medium text-black mb-2">
-                  Pending Redirect URL <span className="text-red-500">*</span>
+                  Success Redirect URL <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="url"
-                  placeholder="https://yoursite.com/pending"
+                  placeholder="https://yoursite.com/success"
                   value={pendingUrl}
                   onChange={(e) => setPendingUrl(e.target.value)}
                   className="w-full px-4 py-3 bg-white border border-gray-600 rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-colors"
