@@ -9,11 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@zkyc/evg": "^1.5.3",
     "next": "15.6.0-canary.60",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "zkyc-lfg": "^2.17.0",
-    "zkyc-sdk-package": "^2.0.0"
+    "zkyc-sdk-package": "^2.0.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
